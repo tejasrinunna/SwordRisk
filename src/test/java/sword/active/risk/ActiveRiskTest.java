@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class ActiveRiskTest {
 
 	private WebDriver driver;
-	
+
 	// Set to your local chrome driver path.
 	private String chromeDriverPath = "C:\\Users\\teju\\Desktop\\Chrome Driver\\Chromedriver.exe";
 
@@ -132,20 +132,7 @@ public class ActiveRiskTest {
 		driver.findElement(By.xpath("//*[@id=\"tabs-3\"]/div[2]/div[3]/div/a[2]"));
 		System.out.println("Downer learnmore is working");
 	}
-
-	// info mail is redirecting to email
-	@Test
-	public void Infomail() {
-		driver.findElement(By.cssSelector("#header-content > div.header-topnav > a:nth-child(2)")).click();
-		driver.findElement(By.xpath("//*[@id=\"hsForm_2f7d3be2-6a93-481c-994d-c36f12768aac\"]/div[9]/div[2]/input"))
-				.click();
-		WebElement link = (driver.findElement(By.xpath("//*[@id=\"internal-page-content\"]/div/div/p[7]/a")));
-		String href = link.getAttribute("href");
-		driver.get(href);
-		System.out.println("Redirecting to the mail");
-
-	}
-
+	
 	// entering the Name
 	@Test
 	public void Username() {
@@ -153,7 +140,7 @@ public class ActiveRiskTest {
 		WebElement link = (driver.findElement(By.xpath("//*[@id=\"menu-mainnav-1\"]/li[7]/ul/li[4]/a")));
 		String href = link.getAttribute("href");
 		driver.get(href);
-		//WebElement element = driver.findElement(By.id("username")).sendKeys("Sword");
+		// WebElement element = driver.findElement(By.id("username")).sendKeys("Sword");
 		System.out.println("Username entered");
 	}
 
@@ -186,4 +173,88 @@ public class ActiveRiskTest {
 		WebElement video = driver.findElement(By.xpath("i//*[@id=\"internal-page-content\"]/div/div[1]/p[9]/a/img"));
 		video.click();
 	}
+
+	// Task 1
+	// To enter employee salesforce portal
+	@Test
+	public void employeeportal() {
+		driver.findElement(By.cssSelector("#header-content > div.header-topnav > a:nth-child(2)")).click();
+		WebElement link = (driver.findElement(By.xpath("//*[@id=\"internal-page-content\"]/div/div/p[9]/a")));
+		String href = link.getAttribute("href");
+		driver.get(href);
+		driver.findElement(By.id("employee_login_link")).click();
+		driver.findElement(By.id("signup_linksignup_link")).click();
+		System.out.println("Entered into Salesforce type for free");
+	}
+
+	// info mail is redirecting to email
+	@Test
+	public void Infomail() {
+		driver.navigate().to("http://www.sword-activerisk.com/company/contact-us/");
+		driver.findElement(By.xpath("//*[@id=\"internal-page-content\"]/div/div/p[7]/a")).click();
+		System.out.println("Redirecting to the mail");
+	}
+	// To Play ARM video
+
+	@Test
+	public void video() {
+		driver.navigate().to("http://www.sword-activerisk.com/benefits-by-role/");
+		driver.findElement(By.cssSelector("#internal-page-content > div > div > p:nth-child(3) > a:nth-child(3)"))
+				.click();
+		driver.get("http://www.sword-activerisk.com/wp-content/uploads/Crossrail_62163_whitechapel_january_2013.jpg");
+		WebElement video = driver.findElement(By.xpath("i//*[@id=\"internal-page-content\"]/div/div[1]/p[9]/a/img"));
+		video.click();
+	}
+
+	// Testing Lockhead Martin download CS
+	@Test
+	public void lockmartin() {
+		driver.navigate().to("http://www.sword-activerisk.com/customers/");
+		driver.findElement(By.cssSelector("#tabs-3 > div.caseContent > div:nth-child(5) > div > a.casePDF")).click();
+		driver.findElement(By.id("ui-id-1")).click();
+		driver.findElement(By.xpath("//*[@id=\"tabs-1\"]/div[2]/div[5]/div/a[1]")).click();
+		System.out.println("Lockhead Martin download casestudy is not working ");
+	}
+	// Task 2
+	// Testing NR learn more
+
+	@Test
+	public void Networkrail() {
+		driver.navigate().to("http://www.sword-activerisk.com/customers/");
+		driver.findElement(By.xpath("//*[@id=\"tabs-3\"]/div[2]/div[5]/div/a[2]")).click();
+		driver.findElement(By.id("ui-id-3")).click();
+		driver.findElement(By.xpath("#tabs-3 > div.caseContent > div:nth-child(5) > div > a.caseLearn")).click();
+		System.out.println("networkrail learn more is perfect to read");
+	}
+
+	// Testing NR download CS
+	@Test
+	public void down() {
+		driver.navigate().to("http://www.sword-activerisk.com/customers/");
+		driver.findElement(By.cssSelector("#tabs-3 > div.caseContent > div:nth-child(5) > div > a.casePDF")).click();
+		driver.findElement(By.id("ui-id-3")).click();
+		driver.findElement(By.xpath("//*[@id=\"tabs-3\"]/div[2]/div[3]/div/a[1]")).click();
+		System.out.println("networkrail download casestudy is giving PDF TO download ");
+	}
+
+	// Testing Skanska learn more
+	@Test
+	public void casestudy() {
+		driver.navigate().to("http://www.sword-activerisk.com/customers/");
+		driver.findElement(By.xpath("//*[@id=\"menu-mainnav-1\"]/li[5]/ul/li/a")).click();
+		driver.findElement(By.id("ui-id-3")).click();
+		driver.findElement(By.cssSelector("#tabs-3 > div.caseContent > div:nth-child(7) > div > a.caseLearn")).click();
+		System.out.println("skanska learn more is perfect to read");
+	}
+
+	// Testing Sknaska download case study
+	@Test
+	public void SkanskaPDF() {
+		driver.navigate().to("http://www.sword-activerisk.com/customers/");
+		driver.findElement(By.cssSelector("#tabs-3 > div.caseContent > div:nth-child(5) > div > a.casePDF")).click();
+		driver.findElement(By.id("ui-id-3")).click();
+		driver.findElement(By.cssSelector("#tabs-3 > div.caseContent > div:nth-child(7) > div > a.casePDF")).click();
+		System.out.println("skanska download casestudy is opening PDF TO download ");
+	}
+
 }
